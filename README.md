@@ -9,29 +9,30 @@ O objetivo principal foi desenvolver uma calculadora funcional e intuitiva, apli
 ✨ Funcionalidades
 A calculadora possui as seguintes funções:
 
-Operações Básicas:
+    -> Operações Básicas:
 
-Soma (+)
+        -> Soma (+)
 
-Subtração (-)
+        -> Subtração (-)
 
-Multiplicação (*)
+        -> Multiplicação (*)
 
-Divisão (/)
+        -> Divisão (/)
 
-Cálculos Avançados:
+    -> Cálculos Avançados:
 
-Potenciação: Calcular um número elevado a outro (x^y).
+        -> Potenciação: Calcular um número elevado a outro (x^y).
 
-Raiz Quadrada: Extrair a raiz quadrada de um número (√x).
+        -> Raiz Quadrada: Extrair a raiz quadrada de um número (√x).
 
-Funções Adicionais:
+    -> Funções Adicionais:
 
-Verificação de Número Primo: Checa se o número inserido no visor é primo.
+        -> Verificação de Número Primo: Checa se o número inserido no visor é primo.
 
-Limpar: Botão C para limpar o visor e o cálculo atual.
+        -> Limpar: Botão C para limpar o visor e o cálculo atual.
 
-🛠️ Tecnologias Utilizadas
-Java: Linguagem de programação principal do projeto.
+    🛠️ Tecnologias Utilizadas
 
-Java Swing: Biblioteca utilizada para a criação de toda a interface gráfica da aplicação.
+        -> Java: Linguagem de programação principal do projeto.
+
+        -> Java Swing: Biblioteca utilizada para a criação de toda a interface gráfica da aplicação.

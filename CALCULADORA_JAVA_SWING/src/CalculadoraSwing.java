@@ -1,6 +1,6 @@
+//Pacotes do Java que contêm as classes necessários para a interface gráfica e eventos.
 import javax.swing.*;
 import java.awt.*;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,28 +9,44 @@ import java.util.Locale;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
+/**
+ * Classe principal da Calculadora.
+ * Herda de JFrame, o que significa que esta classe É uma janela.
+ * Implementa KeyListener, o que significa que ela "promete" ter métodos para responder
+ * a eventos do teclado.
+ */
+
 public class CalculadoraSwing extends JFrame implements KeyListener {
 
+    // Essa parte é a declaração das variáveis
+
+    // Esse são os componentes da interface gráfica.
     private JTextField display;
     private JLabel equationLabel;
     private JPanel panelBotoes;
     private JPanel displayPanel;
 
+    //Esses são as variáveis de estado lógico.
     private double primeiroNumero;
     private String primeiroNumeroTexto;
     private String operadorPendente;
     private boolean limpadorDisplay;
 
+    //Construtor da classe. É aqui que toda a interface é montada e configurada.
     public CalculadoraSwing() {
 
+        //1- Configuração da janela (JFrame)
         super("Calculadora Científica");
-        addKeyListener(this);
-        setFocusable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(350,450);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
+        //2- Configuração do teclado.
+        addKeyListener(this);
+        setFocusable(true);
+
+        //3- Criação do painel de visores.
         displayPanel = new JPanel(new BorderLayout());
         displayPanel.setBackground(Color.BLACK);;
 
@@ -51,6 +67,7 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
 
         displayPanel.add(display, BorderLayout.CENTER);
 
+        //4 - Criação do painel de botões.
         panelBotoes = new JPanel();
         panelBotoes.setLayout(new GridLayout(5,4,5,5));
 
@@ -62,7 +79,7 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
             "Primo", "0", ".", "="
         };
 
-        ButtonClickListener listener = new ButtonClickListener();
+        ButtonClickListener listener = new ButtonClickListener(); //Um único "ouvinte" para todos os botões.
 
         for (String texto : textosBotoes) {
 
@@ -75,29 +92,35 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
                 botao.setFont(new Font("Arial", Font.BOLD, 20));
             }
 
-            botao.setFocusable(false);
+            botao.setFocusable(false); //Remove uma borda de foco que pode aparecer ao clicar.
 
             if ("C/=*+-^√".contains(texto) || texto.equals("Primo")) {
-                botao.setBackground(new Color(255, 153,0));
+                botao.setBackground(new Color(255, 153,0)); //Laranja para operadores.
                 botao.setForeground(Color.WHITE);
             }
             else {
-                botao.setBackground(new Color(64,64,64));
+                botao.setBackground(new Color(64,64,64)); //Cinza escuro para números.
                 botao.setForeground(Color.WHITE);
             }
 
-            botao.addActionListener(listener);
+            botao.addActionListener(listener); // Adiciona o "ouvinte" ao botão.
             panelBotoes.add(botao);
         }
 
+        //5- Adição dos componentes á janela.
         add(displayPanel, BorderLayout.NORTH);
         add(panelBotoes, BorderLayout.CENTER);
 
+        //6- Inicialização do estado da Calculadora.
         operadorPendente = "";
         primeiroNumero = 0;
-        limpadorDisplay = true;
+        limpadorDisplay = true; //Começamos prontos para substituir o "0" inicial.
 
     }
+
+    /**
+     * Método obrigatório do KeyListener. É chamado quando uma tecla é pressionada.
+     */
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -105,6 +128,7 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         char keyChar = e.getKeyChar();
         int  keyCode = e.getKeyCode();
 
+        // Roteia o evento do teclado para o método de lógica apropriado.
         if (keyChar >= '0' && keyChar <= '9') {
             handleNumero(String.valueOf(keyChar));
         }
@@ -135,20 +159,21 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {} // Não precisamos deste.
 
     @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    public void keyReleased(KeyEvent e) {} // Nem deste.
+    /**
+     * Classe interna que "ouve" os cliques nos botões.
+     * Uma única instância dela serve para todos os botões.
+     */
 
     private class ButtonClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String comando = e.getActionCommand();
 
+            // Roteia o comando para o método de lógica apropriado.
             if ("0123456789.".contains(comando)) {
                 handleNumero(comando);
             }
@@ -166,6 +191,10 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
             }
         }
     }
+
+    /**
+     * Verifica se o número atual no visor é primo.
+     */
 
     private void handlePrimeCheck() {
         try {
@@ -192,6 +221,10 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         }
     }
 
+    /**
+     * Reseta a calculadora para o estado inicial.
+     */
+
     private boolean isPrime(long n) {
         if (n <= 1) {
             return false;
@@ -213,6 +246,11 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
 
         return true;
     }
+
+    /**
+     * Lida com a entrada de dígitos (0-9) e do ponto decimal.
+     * Atualiza os visores em tempo real.
+     */
 
     private void handleNumero(String num) {
 
@@ -241,6 +279,10 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
 
     }
 
+    /**
+     * Reseta a calculadora para o estado inicial.
+     */
+
     private void handleClear() {
         display.setText("0");
         equationLabel.setText("");
@@ -249,6 +291,10 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         primeiroNumeroTexto = "";
         limpadorDisplay = true;
     }
+
+    /**
+     * Lida com o clique em um operador (+, -, *, /, ^, √).
+     */
 
     private void handleOperador(String op) {
         if (!operadorPendente.isEmpty() && !limpadorDisplay) {
@@ -271,6 +317,10 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
             operadorPendente = "";
         }
     }
+
+    /**
+     * Realiza o cálculo final quando o botão "=" é pressionado.
+     */
 
     private void handleEquals() {
         if (operadorPendente.isEmpty()) {
@@ -305,6 +355,11 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         limpadorDisplay = true;
     }
 
+    /**
+     * Formata um número 'double' para exibição limpa no visor.
+     * Remove o ".0" de inteiros e limita as casas decimais.
+     */
+
     private String formatarResultado(double resultado) {
         if (resultado == (long) resultado) {
             return String.format(Locale.US,"%d", (long) resultado);
@@ -315,6 +370,11 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
             return df.format(resultado);
         }
     }
+
+    /**
+     * O método principal que inicia o programa.
+     */
+
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
@@ -324,6 +384,11 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         
     }
 }
+
+/**
+ * Uma classe de botão personalizada que usa RenderingHints para desenhar
+ * o texto com anti-aliasing, deixando-o mais suave e profissional.
+ */
 
 class JCustomButton extends JButton {
     

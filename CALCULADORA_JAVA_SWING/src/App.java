@@ -5,13 +5,42 @@ import java.util.Scanner;
 import java.lang.Math;
 
 public class App {
-    @SuppressWarnings("unused")
+
+    /**
+     * Função para verificar se um número é primo.
+     * @param numero O número a ser testado.
+     * @return true se o número for primo, false caso contrário.
+     */
+
+public boolean isPrimo(int numero) {
+
+    if (numero <= 1) {
+        return false;
+    }
+
+    if (numero == 2) {
+        return true;
+    }
+
+    if (numero % 2 == 0) {
+        return false;
+    }
+
+    for (int i = 3; i <= Math.sqrt(numero); i += 2) {
+        if (numero % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
 
         int numeroEscolhido = 0;
-        int primeiroNumero, segundoNumero, terceiroNumero;
+        int primeiroNumero, segundoNumero;
         int operacaoSoma, operacaoSubtrair, operacaoMultiplicar, operacaoPotencia;
         double operacaoDividir, operacaoRaiz;
 
@@ -24,6 +53,7 @@ public class App {
                         System.err.println("Erro ao tentar limpar: " + e.getMessage());
             }
 
+            //Area de escolha do Usuário
             System.out.println("----- Menu -----");
             System.out.println("1 - Somar");
             System.out.println("2 - Subtrair");
@@ -37,12 +67,14 @@ public class App {
                 numeroEscolhido = sc.nextInt();
             System.out.println("Carregando...");
 
+            //Estrutura para o tempo de limpeza
             try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
+            
+            //Estrutura para limpeza do terminal
             try {
                 if (System.getProperty("os.name").contains("Windows")) {
                      new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -51,349 +83,317 @@ public class App {
                         System.err.println("Erro ao tentar limpar: " + e.getMessage());
             }
             
+            //Estrutura de excecução dos operadores da calculadora
             switch (numeroEscolhido) {
                 case 1:
-                try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
 
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    System.out.print("Digite o segundo numero: ");
-                        segundoNumero = sc.nextInt();
-                    System.out.println("Obs: Caso não deseje usar um terceiro numero, digite '0' ");
-                    System.out.print("Digite o terceiro numero: ");
-                        terceiroNumero = sc.nextInt();
-
-                        if (terceiroNumero == 0) {
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                            System.out.print("Digite o segundo numero: ");
+                                segundoNumero = sc.nextInt();
+                                
                             operacaoSoma = primeiroNumero + segundoNumero;
-                            
+                                    
                             System.out.println("A soma do numeros informado é: " + operacaoSoma);
+                                
+                            System.out.println("Finalizando...");
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            operacaoSoma = (primeiroNumero + segundoNumero) + terceiroNumero;
 
-                            System.out.println(" A soma dos numeros informados é: " + operacaoSoma);
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
-                        
-                    System.out.println("Finalizando...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
                 break;
                 case 2:
-                try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
 
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    System.out.print("Digite o segundo numero: ");
-                        segundoNumero = sc.nextInt();
-                    System.out.println("Obs: Caso não deseje usar um terceiro numero, digite '0' ");
-                    System.out.print("Digite o terceiro numero: ");
-                        terceiroNumero = sc.nextInt();
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                            System.out.print("Digite o segundo numero: ");
+                                segundoNumero = sc.nextInt();
 
-                        if (terceiroNumero == 0) {
                             operacaoSubtrair = primeiroNumero - segundoNumero;
-                            
+                                    
                             System.out.println("A soma do numeros informado é: " + operacaoSubtrair);
+
+                            System.out.println("Finalizando...");
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            operacaoSubtrair = (primeiroNumero - segundoNumero) - terceiroNumero;
 
-                            System.out.println(" A soma dos numeros informados é: " + operacaoSubtrair);
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
-
-                    System.out.println("Finalizando...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
                 break;
                 case 3:
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
 
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    System.out.print("Digite o segundo numero: ");
-                        segundoNumero = sc.nextInt();
-                    System.out.println("Obs: Caso não deseje usar um terceiro numero, digite '0' ");
-                    System.out.print("Digite o terceiro numero: ");
-                        terceiroNumero = sc.nextInt();
-
-                        if (terceiroNumero == 0) {
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                            System.out.print("Digite o segundo numero: ");
+                                segundoNumero = sc.nextInt();
+                                
                             operacaoMultiplicar = primeiroNumero * segundoNumero;
-                            
+                                    
                             System.out.println("A soma do numeros informado é: " + operacaoMultiplicar);
+                                
+                            System.out.println("Finalizando...");
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            operacaoMultiplicar = (primeiroNumero * segundoNumero) * terceiroNumero;
 
-                            System.out.println(" A soma dos numeros informados é: " + operacaoMultiplicar);
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
-
-                    System.out.println("Finalizando...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
                 break;
                 case 4:
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    System.out.print("Digite o segundo numero: ");
-                        segundoNumero = sc.nextInt();
-                    System.out.println("Obs: Caso não deseje usar um terceiro numero, digite '0' ");
-                    System.out.print("Digite o terceiro numero: ");
-                        terceiroNumero = sc.nextInt();
-
-                        if (terceiroNumero == 0) {
-                            if (primeiroNumero < segundoNumero) {
-                                operacaoDividir = segundoNumero / primeiroNumero;
-                                
-                                System.out.println("A soma do numeros informado é: " + operacaoDividir);
-                            }
-                            else {
-                               operacaoDividir = primeiroNumero / segundoNumero;
-                               
-                               System.out.println("A soma do numeros informado é: " + operacaoDividir);
-                            }
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                    System.out.println("Finalizando...");
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                            System.out.print("Digite o segundo numero: ");
+                                segundoNumero = sc.nextInt();                            
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                                    if (primeiroNumero < segundoNumero) {
+                                        operacaoDividir = segundoNumero / primeiroNumero;                                        
+                                        System.out.println("A soma do numeros informado é: " + operacaoDividir);
+                                    }
+                                    else {
+                                        operacaoDividir = primeiroNumero / segundoNumero;                                    
+                                        System.out.println("A soma do numeros informado é: " + operacaoDividir);
+                                    }
 
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                            System.out.println("Finalizando...");
 
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                                System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
                 break;                
                 case 5:
-                 try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    
-                    operacaoPotencia = (int) Math.pow(primeiroNumero, 2);
-
-                    System.out.println("A potencia dos numeros informado é: " + operacaoPotencia);
-
-
-                    System.out.println("Finalizando...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }                   
-
-                break;
-                case 6:
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    
-                    operacaoRaiz = Math.sqrt(primeiroNumero);
-
-                    System.out.println("A potencia dos numeros informado é: " + operacaoRaiz);
-
-
-                    System.out.println("Finalizando...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
-                break;
-                case 7:
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
-
-                    System.out.print("Digite o primeiro numero: ");
-                        primeiroNumero = sc.nextInt();
-                    
-                    if (primeiroNumero <= 1) {
-                        System.out.println("Não é Primo");
-                        return;
-                    }
-
-                    if (primeiroNumero == 2) {
-                        System.out.println("é Primo");
-                        return;
-                    }
-
-                    if (primeiroNumero % 2 == 0) {
-                        System.out.println("Não é Primo");
-                        return;
-                    }
-
-                    for (int i = 3; i <= Math.sqrt(primeiroNumero); i = i + 2) {
-                        if (primeiroNumero % i == 0) {
-                            System.out.println("Não é primo");
-                            return;
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                        return;
-                    }
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                            
+                            operacaoPotencia = (int) Math.pow(primeiroNumero, 2);
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                            System.out.println("A potencia dos numeros informado é: " + operacaoPotencia);
 
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                            System.out.println("Finalizando...");
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                                System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
+                break;
+                case 6:
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
+
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+                                                            
+                            operacaoRaiz = Math.sqrt(primeiroNumero);
+
+                            System.out.println("A potencia dos numeros informado é: " + operacaoRaiz);
+
+                            System.out.println("Finalizando...");
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
+                break;
+                case 7:
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
+
+                        App verificador = new App();
+
+                            System.out.print("Digite o primeiro numero: ");
+                                primeiroNumero = sc.nextInt();
+
+                                if (verificador.isPrimo(primeiroNumero)) {
+                                    System.out.println(primeiroNumero + " é Primo");
+                                }
+                                else {
+                                    System.out.println(primeiroNumero + " não é Primo");
+                                }
+                                
+                            System.out.println("Finalizando...");                    
+
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
 
                 break;
                 case 8:
-                    System.out.println("Finalizando Programa...");
+                            System.out.println("Finalizando Programa...");
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-        
-                  try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
 
-                    System.out.println("");
-                    System.out.println("Até Logo!!");
+                            System.out.println("");
+                            System.out.println("Até Logo!!");
                 break;
                 default:
-                    System.out.println("");
-                    System.out.println("Opção Inválida");
-                    System.out.println("Retornando ao menu...");
+                            System.out.println("");
+                            System.out.println("Opção Inválida");
+                            System.out.println("Retornando ao menu...");
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            Thread.sleep(5000);
+                        } 
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-                    try {
-                    if (System.getProperty("os.name").contains("Windows")) {
-                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                    }                    
-                    } catch (IOException | InterruptedException e) {
-                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                    }
+                        try {
+                            if (System.getProperty("os.name").contains("Windows")) {
+                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                            }                    
+                        } 
+                        catch (IOException | InterruptedException e) {
+                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                        }
                 break;
+            }
         }
-    }
      sc.close();
     }
           

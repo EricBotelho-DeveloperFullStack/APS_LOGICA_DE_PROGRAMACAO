@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.lang.Math;
 
-public class App {
+public class CalculadoraConsole {
 
     /**
      * Função para verificar se um número é primo.
@@ -39,12 +39,14 @@ public boolean isPrimo(int numero) {
         Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
 
+        //Declaração de vaiáveis
         int numeroEscolhido = 0;
         int primeiroNumero, segundoNumero;
         int operacaoSoma, operacaoSubtrair, operacaoMultiplicar, operacaoPotencia;
         double operacaoDividir, operacaoRaiz;
 
-        while(numeroEscolhido != 3) {
+        //Estrutura de repetição
+        while(numeroEscolhido != 8) {
             try {
                 if (System.getProperty("os.name").contains("Windows")) {
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -54,15 +56,16 @@ public boolean isPrimo(int numero) {
             }
 
             //Area de escolha do Usuário
-            System.out.println("----- Menu -----");
+            System.out.println("-------------- Menu --------------");
             System.out.println("1 - Somar");
             System.out.println("2 - Subtrair");
             System.out.println("3 - Multiplicar");
             System.out.println("4 - Dividir");
             System.out.println("5 - Potencia");
             System.out.println("6 - Raiz");
-            System.out.println("7 - Identificação de numero Primo.");
+            System.out.println("7 - Identificador de numero Primo.");
             System.out.println("8 - Sair");
+            System.out.println("-----------------------------------");
             System.out.print("Qual opção desejada? ");
                 numeroEscolhido = sc.nextInt();
             System.out.println("Carregando...");
@@ -85,6 +88,7 @@ public boolean isPrimo(int numero) {
             
             //Estrutura de excecução dos operadores da calculadora
             switch (numeroEscolhido) {
+                //Estrutura da Soma
                 case 1:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -95,14 +99,16 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual o primeiro numero?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
-                            System.out.print("Digite o segundo numero: ");
+                            System.out.println("Qual o segundo numero?");
+                            System.out.print("-> ");
                                 segundoNumero = sc.nextInt();
                                 
                             operacaoSoma = primeiroNumero + segundoNumero;
                                     
-                            System.out.println("A soma do numeros informado é: " + operacaoSoma);
+                            System.out.println("A soma dos numeros informados é: " + operacaoSoma);
                                 
                             System.out.println("Finalizando...");
 
@@ -122,6 +128,8 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
                 break;
+
+                //Estrutura da Subtração
                 case 2:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -132,14 +140,16 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                           System.out.println("Qual o primeiro numero?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
-                            System.out.print("Digite o segundo numero: ");
+                            System.out.println("Qual o segundo numero?");
+                            System.out.print("-> ");
                                 segundoNumero = sc.nextInt();
 
                             operacaoSubtrair = primeiroNumero - segundoNumero;
                                     
-                            System.out.println("A soma do numeros informado é: " + operacaoSubtrair);
+                            System.out.println("A subtração dos numeros informados é: " + operacaoSubtrair);
 
                             System.out.println("Finalizando...");
 
@@ -159,6 +169,8 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
                 break;
+
+                //Estrutura da Multiplicação
                 case 3:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -169,14 +181,16 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual o primeiro numero?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
-                            System.out.print("Digite o segundo numero: ");
+                            System.out.println("Qual o segundo numero?");
+                            System.out.print("-> ");
                                 segundoNumero = sc.nextInt();
-                                
-                            operacaoMultiplicar = primeiroNumero * segundoNumero;
                                     
-                            System.out.println("A soma do numeros informado é: " + operacaoMultiplicar);
+                                operacaoMultiplicar = primeiroNumero * segundoNumero;
+                                        
+                                System.out.println("A multiplicação dos numeros informados é: " + operacaoMultiplicar);
                                 
                             System.out.println("Finalizando...");
 
@@ -196,6 +210,8 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
                 break;
+
+                //Estrutura da Divisão
                 case 4:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -206,18 +222,20 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual o primeiro numero?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
-                            System.out.print("Digite o segundo numero: ");
+                            System.out.println("Qual o segundo numero?");
+                            System.out.print("-> ");
                                 segundoNumero = sc.nextInt();                            
 
                                     if (primeiroNumero < segundoNumero) {
-                                        operacaoDividir = segundoNumero / primeiroNumero;                                        
-                                        System.out.println("A soma do numeros informado é: " + operacaoDividir);
+                                        operacaoDividir = (double) segundoNumero / (double)primeiroNumero;                                        
+                                        System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
                                     }
                                     else {
-                                        operacaoDividir = primeiroNumero / segundoNumero;                                    
-                                        System.out.println("A soma do numeros informado é: " + operacaoDividir);
+                                        operacaoDividir = (double) primeiroNumero / (double) segundoNumero;                                    
+                                        System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
                                     }
 
                             System.out.println("Finalizando...");
@@ -237,7 +255,9 @@ public boolean isPrimo(int numero) {
                         catch (IOException | InterruptedException e) {
                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
-                break;                
+                break;
+                
+                //Estrutura da Potência
                 case 5:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -248,10 +268,14 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual o numerador?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
+                            System.out.println("Qual o denominador?");
+                            System.out.print("-> ");
+                                segundoNumero = sc.nextInt();
                             
-                            operacaoPotencia = (int) Math.pow(primeiroNumero, 2);
+                            operacaoPotencia = (int) Math.pow(primeiroNumero, segundoNumero);
 
                             System.out.println("A potencia dos numeros informado é: " + operacaoPotencia);
 
@@ -273,6 +297,8 @@ public boolean isPrimo(int numero) {
                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
                 break;
+
+                //Estrutura da Reais Quadrada
                 case 6:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -283,12 +309,13 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual o numero desejado?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
                                                             
                             operacaoRaiz = Math.sqrt(primeiroNumero);
 
-                            System.out.println("A potencia dos numeros informado é: " + operacaoRaiz);
+                            System.out.println("A raiz quadrada do numero informado é: " + String.format("%.2f", operacaoRaiz));
 
                             System.out.println("Finalizando...");
 
@@ -308,6 +335,8 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
                 break;
+
+                //Estrutura da identificação de numero primo
                 case 7:
                         try {
                             if (System.getProperty("os.name").contains("Windows")) {
@@ -318,9 +347,10 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                        App verificador = new App();
+                        CalculadoraConsole verificador = new CalculadoraConsole();
 
-                            System.out.print("Digite o primeiro numero: ");
+                            System.out.println("Qual numero desejado?");
+                            System.out.print("-> ");
                                 primeiroNumero = sc.nextInt();
 
                                 if (verificador.isPrimo(primeiroNumero)) {
@@ -349,6 +379,8 @@ public boolean isPrimo(int numero) {
                         }
 
                 break;
+
+                //Estrutura de encerramento do programa
                 case 8:
                             System.out.println("Finalizando Programa...");
 
@@ -368,9 +400,10 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("");
-                            System.out.println("Até Logo!!");
+                        System.out.println("Até Logo!!");
                 break;
+
+                //Estrutura de Digitação não correlacionada com o menu
                 default:
                             System.out.println("");
                             System.out.println("Opção Inválida");

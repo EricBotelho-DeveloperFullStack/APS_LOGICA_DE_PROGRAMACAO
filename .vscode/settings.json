@@ -1,11 +1,6 @@
 {
   "java.project.sourcePaths": ["CALCULADORA_JAVA_SWING\\src"],
   "java.project.referencedLibraries": [],
-  "cSpell.words": [
-    "Aritmedica",
-    "botao",
-    "numeros",
-    "operacao",
-    "Reseta"
-  ]
+  "cSpell.words": ["Aritmedica", "botao", "numeros", "operacao", "Reseta"],
+  "java.debug.settings.onBuildFailureProceed": true
 }

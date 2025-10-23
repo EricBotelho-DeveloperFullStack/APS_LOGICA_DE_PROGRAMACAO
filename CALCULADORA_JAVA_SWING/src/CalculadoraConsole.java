@@ -36,12 +36,15 @@ public boolean isPrimo(int numero) {
 
 }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
 
         //Declaração de vaiáveis
         int numeroEscolhido = 0;
+        char escolhaRealInteiro;
         int primeiroNumero, segundoNumero;
+        double primeiroNumeroReal, segundoNumeroReal;
+        double operacaoSomaReal, operacaoSubtrairReal, operacaoMultiplicarReal, operacaoPotenciaReal;
         int operacaoSoma, operacaoSubtrair, operacaoMultiplicar, operacaoPotencia;
         double operacaoDividir, operacaoRaiz;
 
@@ -99,34 +102,103 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("Qual o primeiro numero?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                            System.out.println("Qual o segundo numero?");
-                            System.out.print("-> ");
-                                segundoNumero = sc.nextInt();
-                                
-                            operacaoSoma = primeiroNumero + segundoNumero;
+                                escolhaRealInteiro = sc.next().charAt(0);
+
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
+
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
+
+                            System.out.println("Carregando...");
+
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+                            if (escolhaRealInteiro == '1') {
+                                System.out.println("Qual o primeiro numero?");
+                                System.out.print("-> ");
+                                    primeiroNumero = sc.nextInt();
+                                System.out.println("Qual o segundo numero?");
+                                System.out.print("-> ");
+                                    segundoNumero = sc.nextInt();
                                     
-                            System.out.println("A soma dos numeros informados é: " + operacaoSoma);
-                                
-                            System.out.println("Finalizando...");
+                                    operacaoSoma = primeiroNumero + segundoNumero;
+                                        
+                                    System.out.println("A soma dos numeros informados é: " + operacaoSoma);
+                                    
+                                    System.out.println("Finalizando...");
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                e.printStackTrace();
+                                }
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+                            else if (escolhaRealInteiro == '2') {                                
+
+                                System.out.println("Qual o primeiro numero?");
+                                System.out.print("-> ");
+                                    primeiroNumeroReal = sc.nextDouble();
+                                System.out.println("Qual o segundo numero?");
+                                System.out.print("-> ");
+                                    segundoNumeroReal = sc.nextDouble();
+
+                                operacaoSomaReal = primeiroNumeroReal + segundoNumeroReal;
+
+                                System.out.println("A soma dos numeros informado é: " + operacaoSomaReal);
+
+                                System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+
+                           
                 break;
 
                 //Estrutura da Subtração
@@ -140,34 +212,102 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                           System.out.println("Qual o primeiro numero?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                            System.out.println("Qual o segundo numero?");
-                            System.out.print("-> ");
-                                segundoNumero = sc.nextInt();
+                                escolhaRealInteiro = sc.next().charAt(0);
 
-                            operacaoSubtrair = primeiroNumero - segundoNumero;
-                                    
-                            System.out.println("A subtração dos numeros informados é: " + operacaoSubtrair);
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
 
-                            System.out.println("Finalizando...");
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                            System.out.println("Carregando...");
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+                            if (escolhaRealInteiro == '1') {
+
+                                System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumero = sc.nextInt();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumero = sc.nextInt();
+
+                                    operacaoSubtrair = primeiroNumero - segundoNumero;
+                                            
+                                    System.out.println("A subtração dos numeros informados é: " + operacaoSubtrair);
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+                            else if (escolhaRealInteiro == '2') {
+
+                                    System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumeroReal = sc.nextDouble();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumeroReal = sc.nextDouble();
+
+                                    operacaoSubtrairReal = primeiroNumeroReal - segundoNumeroReal;
+
+                                    System.out.println("A subtração dos numeros informado é: " + operacaoSubtrairReal);
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
                 break;
 
                 //Estrutura da Multiplicação
@@ -181,34 +321,103 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("Qual o primeiro numero?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                            System.out.println("Qual o segundo numero?");
-                            System.out.print("-> ");
-                                segundoNumero = sc.nextInt();
-                                    
-                                operacaoMultiplicar = primeiroNumero * segundoNumero;
+                                escolhaRealInteiro = sc.next().charAt(0);
+
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
+
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
+
+                            System.out.println("Carregando...");
+
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+                            if (escolhaRealInteiro == '1') {
+
+                                    System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumero = sc.nextInt();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumero = sc.nextInt();
+                                            
+                                        operacaoMultiplicar = primeiroNumero * segundoNumero;
+                                                
+                                        System.out.println("A multiplicação dos numeros informados é: " + operacaoMultiplicar);
                                         
-                                System.out.println("A multiplicação dos numeros informados é: " + operacaoMultiplicar);
-                                
-                            System.out.println("Finalizando...");
+                                    System.out.println("Finalizando...");
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+
+                            }
+                            else if (escolhaRealInteiro == '2') {
+
+                                    System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumeroReal = sc.nextDouble();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumeroReal = sc.nextDouble();
+
+                                    operacaoMultiplicarReal = primeiroNumeroReal * segundoNumeroReal;
+
+                                    System.out.println("A multiplicação dos numeros informado é: " + operacaoMultiplicarReal);
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
                 break;
 
                 //Estrutura da Divisão
@@ -222,39 +431,112 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("Qual o primeiro numero?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                            System.out.println("Qual o segundo numero?");
-                            System.out.print("-> ");
-                                segundoNumero = sc.nextInt();                            
+                                escolhaRealInteiro = sc.next().charAt(0);
 
-                                    if (primeiroNumero < segundoNumero) {
-                                        operacaoDividir = (double) segundoNumero / (double)primeiroNumero;                                        
-                                        System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
-                                    }
-                                    else {
-                                        operacaoDividir = (double) primeiroNumero / (double) segundoNumero;                                    
-                                        System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
-                                    }
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
 
-                            System.out.println("Finalizando...");
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                            System.out.println("Carregando...");
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                                System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+
+                            if (escolhaRealInteiro == '1') {
+                                    System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumero = sc.nextInt();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumero = sc.nextInt();                            
+
+                                            if (primeiroNumero < segundoNumero) {
+                                                operacaoDividir = segundoNumero / primeiroNumero;                                        
+                                                System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
+                                            }
+                                            else {
+                                                operacaoDividir = primeiroNumero / segundoNumero;                                    
+                                                System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
+                                            }
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+                            else if (escolhaRealInteiro == '2') {
+
+                                    System.out.println("Qual o primeiro numero?");
+                                    System.out.print("-> ");
+                                        primeiroNumeroReal = sc.nextDouble();
+                                    System.out.println("Qual o segundo numero?");
+                                    System.out.print("-> ");
+                                        segundoNumeroReal = sc.nextDouble();                            
+
+                                            if (primeiroNumeroReal < segundoNumeroReal) {
+                                                operacaoDividir = segundoNumeroReal / primeiroNumeroReal;                                        
+                                                System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
+                                            }
+                                            else {
+                                                operacaoDividir = primeiroNumeroReal / segundoNumeroReal;                                    
+                                                System.out.println("A divisão dos numeros informados é: " + String.format("%.2f", operacaoDividir));
+                                            }
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
                 break;
                 
                 //Estrutura da Potência
@@ -268,34 +550,102 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("Qual o numerador?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                            System.out.println("Qual o denominador?");
-                            System.out.print("-> ");
-                                segundoNumero = sc.nextInt();
-                            
-                            operacaoPotencia = (int) Math.pow(primeiroNumero, segundoNumero);
+                                escolhaRealInteiro = sc.next().charAt(0);
 
-                            System.out.println("A potencia dos numeros informado é: " + operacaoPotencia);
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
 
-                            System.out.println("Finalizando...");
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                            System.out.println("Carregando...");
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                                System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+                            if (escolhaRealInteiro == '1') {                        
+
+                                    System.out.println("Qual o numerador?");
+                                    System.out.print("-> ");
+                                        primeiroNumero = sc.nextInt();
+                                    System.out.println("Qual o denominador?");
+                                    System.out.print("-> ");
+                                        segundoNumero = sc.nextInt();
+                                    
+                                    operacaoPotencia = (int) Math.pow(primeiroNumero, segundoNumero);
+
+                                    System.out.println("A potencia dos numeros informado é: " + operacaoPotencia);
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+                            else if (escolhaRealInteiro == '2'){
+
+                                System.out.println("Qual o numerador?");
+                                    System.out.print("-> ");
+                                        primeiroNumeroReal = sc.nextDouble();
+                                    System.out.println("Qual o denominador?");
+                                    System.out.print("-> ");
+                                        segundoNumeroReal = sc.nextDouble();
+                                    
+                                    operacaoPotenciaReal = Math.pow(primeiroNumeroReal, segundoNumeroReal);
+
+                                    System.out.println("A potencia dos numeros informado é: " + operacaoPotenciaReal);
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                        System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
                 break;
 
                 //Estrutura da Reais Quadrada
@@ -309,31 +659,96 @@ public boolean isPrimo(int numero) {
                             System.err.println("Erro ao tentar limpar: " + e.getMessage());
                         }
 
-                            System.out.println("Qual o numero desejado?");
+                            System.out.println("Qual tipo de numero deseja?");
+                            System.out.println("1 - Inteiro");
+                            System.out.println("2 - Real");
                             System.out.print("-> ");
-                                primeiroNumero = sc.nextInt();
-                                                            
-                            operacaoRaiz = Math.sqrt(primeiroNumero);
+                                escolhaRealInteiro = sc.next().charAt(0);
 
-                            System.out.println("A raiz quadrada do numero informado é: " + String.format("%.2f", operacaoRaiz));
+                            while (escolhaRealInteiro < '1' || escolhaRealInteiro > '2') {
+                                System.out.println("Opção inválida! escolha novamente uma das opções!");
 
-                            System.out.println("Finalizando...");
+                                System.out.println("Qual tipo de numero deseja?");
+                                System.out.println("1 - Inteiro");
+                                System.out.println("2 - Real");
+                                System.out.print("-> ");
+                                    escolhaRealInteiro = sc.next().charAt(0);
+                            }
 
-                        try {
-                            Thread.sleep(5000);
-                        } 
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                            System.out.println("Carregando...");
 
-                        try {
-                            if (System.getProperty("os.name").contains("Windows")) {
-                                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                            }                    
-                        } 
-                        catch (IOException | InterruptedException e) {
-                            System.err.println("Erro ao tentar limpar: " + e.getMessage());
-                        }
+                            try {
+                                Thread.sleep(5000);
+                            } 
+                            catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                if (System.getProperty("os.name").contains("Windows")) {
+                                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                }                    
+                            } 
+                            catch (IOException | InterruptedException e) {
+                                 System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                            }
+
+                            if (escolhaRealInteiro == '1') {
+
+                                    System.out.println("Qual o numero desejado?");
+                                    System.out.print("-> ");
+                                        primeiroNumero = sc.nextInt();
+                                                                    
+                                    operacaoRaiz = Math.sqrt(primeiroNumero);
+
+                                    System.out.println("A raiz quadrada do numero informado é: " + String.format("%.2f", operacaoRaiz));
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
+                            else if (escolhaRealInteiro == '2') {
+
+                                System.out.println("Qual o numero desejado?");
+                                    System.out.print("-> ");
+                                        primeiroNumeroReal = sc.nextDouble();
+                                                                    
+                                    operacaoRaiz = Math.sqrt(primeiroNumeroReal);
+
+                                    System.out.println("A raiz quadrada do numero informado é: " + String.format("%.2f", operacaoRaiz));
+
+                                    System.out.println("Finalizando...");
+
+                                try {
+                                    Thread.sleep(5000);
+                                } 
+                                catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    if (System.getProperty("os.name").contains("Windows")) {
+                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                                    }                    
+                                } 
+                                catch (IOException | InterruptedException e) {
+                                    System.err.println("Erro ao tentar limpar: " + e.getMessage());
+                                }
+                            }
                 break;
 
                 //Estrutura da identificação de numero primo

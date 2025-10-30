@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe principal da Calculadora.
@@ -207,12 +209,25 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
 
             long numero = (long) numeroDouble;
 
-            if (isPrime(numero)) {
+            long startTime = System.nanoTime();
+
+            boolean isPrimeResult = isPrime(numero);
+
+            long endTime = System.nanoTime();
+            Long durationNs = endTime - startTime;
+
+            if (isPrimeResult) {
                 equationLabel.setText(numero + " é Primo");                
             }
             else {
                 equationLabel.setText(numero + " não é Primo");
             }
+
+            System.out.println("/n--- BENCHMARK PRIMO (OTIMIZADO) ---");
+            System.out.println("Número testado: " + numero);
+            System.out.println("Resultado: " + (isPrimeResult ? "Primo" : "Composto"));
+            System.out.println("Tempo de execução: " + durationNs + " ns");
+            System.out.println("--------------------------------------\n");
 
             limpadorDisplay = true;
         }
@@ -221,9 +236,20 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         }
     }
 
-    /**
-     * Reseta a calculadora para o estado inicial.
-     */
+    public boolean isPrimeForcaBruta(long n) {
+
+        if (n <= 1) {
+        return false;
+        }
+
+        for (long i = 2; i < n; i++) {
+            if (n % i == 0) {
+            return false;
+            }
+        }
+
+        return true;
+    }
 
     private boolean isPrime(long n) {
         if (n <= 1) {
@@ -247,6 +273,31 @@ public class CalculadoraSwing extends JFrame implements KeyListener {
         return true;
     }
 
+    public static List<Long> gerarPrimosComCrivo(int n) {
+        boolean[] isPrime = new boolean[n + 1];
+
+        for (int i = 2; i <= n; i++) {
+            isPrime[i] = true;
+        }
+
+        for (int p = 2; p * p <= n; p++) {
+            if (isPrime[p]) {
+                for (int i = p * p; i <= n; i += p) {
+                    isPrime[i] = false;
+                }
+            }
+        }
+
+        List<Long> primos = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                primos.add((long) i);
+            }
+        }
+
+        return primos;
+    }
+    
     /**
      * Lida com a entrada de dígitos (0-9) e do ponto decimal.
      * Atualiza os visores em tempo real.
